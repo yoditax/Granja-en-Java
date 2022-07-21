@@ -3,20 +3,27 @@ package com.granja;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Oviparo {
-	int id;
+public class Cattle {
+	private int id;
 
-	LocalDate nacimiento;
-	LocalDate ingresoAGranja;
-	BigDecimal precioCompra;
-	BigDecimal precioVenta;
+	private LocalDate nacimiento;
+	private LocalDate ingresoAGranja;
+	private BigDecimal precioCompra;
+	private BigDecimal precioVenta;
+	private String animal;
 
-	public Oviparo(int id, LocalDate nacimiento, LocalDate ingresoAGranja, String precioCompra, String precioVenta) {
+	private int diasExpiracion;
+
+	public Cattle(int id, LocalDate nacimiento, LocalDate ingresoAGranja, String precioCompra, String precioVenta,
+			String animal, int diasExpiracion) {
 		this.id = id;
 		this.nacimiento = nacimiento;
 		this.ingresoAGranja = ingresoAGranja;
 		this.precioCompra = new BigDecimal(precioCompra);
 		this.precioVenta = new BigDecimal(precioVenta);
+		// this.animal = animal;
+		// this.diasExpiracion = Expiracion.getCantDiasByAnimal(animal);
+		// this.precioVenta=Precios.getPrecioVentaByAnimal(animal);
 	}
 
 	public int getId() {
@@ -47,8 +54,8 @@ public class Oviparo {
 		return precioCompra;
 	}
 
-	public void setPrecioCompra(BigDecimal precioCompra) {
-		this.precioCompra = precioCompra;
+	public static void setPrecioCompra(String precioCompra) {
+		precioCompra = precioCompra;
 	}
 
 	public BigDecimal getPrecioVenta() {
@@ -56,13 +63,13 @@ public class Oviparo {
 	}
 
 	public void setPrecioVenta(BigDecimal precioVenta) {
-		this.precioVenta = precioVenta;
+		precioVenta = precioVenta;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Id - %d, Fecha nacimiento - %s, Ingreso a Granja - %s, Precio Venta - %s, Precio Compra - %s", id,
+				"Id - %d, Fecha nacimiento - %s, Ingreso a Granja - %s, PrecioCompra - %s, PrecioVenta - %s", id,
 				nacimiento, ingresoAGranja, precioCompra, precioVenta);
 	}
 

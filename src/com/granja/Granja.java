@@ -11,8 +11,8 @@ public class Granja {
 	int cantMaxHuevos;
 	private ArrayList<Huevo> huevos = new ArrayList<>();
 	private ArrayList<Pollito> pollitos = new ArrayList<>();
-	private int cantHuevos = huevos.size();
-	private int cantPollitos = pollitos.size();
+	private ArrayList<Precios> precios = new ArrayList<>();
+
 
 	public Granja(String dineroEnCaja, int cantMaxPollitos, int cantMaxHuevos) {
 		super();
@@ -38,19 +38,11 @@ public class Granja {
 	}
 
 	public int getCantHuevos() {
-		return cantHuevos;
-	}
-
-	public void setCantHuevos(int cantHuevos) {
-		this.cantHuevos = cantHuevos;
+		return huevos.size();
 	}
 
 	public int getCantPollitos() {
-		return cantPollitos;
-	}
-
-	public void setCantPollitos(int cantPollitos) {
-		this.cantPollitos = cantPollitos;
+		return pollitos.size();
 	}
 
 	public BigDecimal getDineroEnCaja() {
@@ -63,6 +55,10 @@ public class Granja {
 
 	public void addPollito(Pollito pollito) {
 		this.pollitos.add(pollito);
+	}
+
+	public void addPrecio(Precios precio) {
+		this.precios.add(precio);
 	}
 
 	public void addHuevo(Huevo huevo) {
@@ -83,9 +79,18 @@ public class Granja {
 
 		System.out.println("La cantidad de huevos que hay en la granja es de " + huevos.size());
 		System.out.println("La mayor cantidad de huevos que puede haber es de: " + cantMaxHuevos);
+		System.out.printf("Los huevos se venden a %s y se compran a %s \n", Precios.getPrecioVentaByAnimal("huevo"),
+				Precios.getPrecioCompraByAnimal("huevo"));
+
 		System.out.println("La cantidad de pollitos que hay en la granja es de " + pollitos.size());
 		System.out.println("La mayor cantidad de pollitos que puede haber es de: " + cantMaxPollitos);
+
+		System.out.printf("Los pollos se venden a %s y se compran a %s \n", Precios.getPrecioVentaByAnimal("pollito"),
+				Precios.getPrecioCompraByAnimal("pollito"));
+
 		System.out.println("La caja es de " + this.dineroEnCaja + " pesos");
+		System.out.printf("Hay %d precios guardados", precios.size());
+		System.out.println(precios);
 
 	}
 
@@ -103,9 +108,10 @@ public class Granja {
 
 	@Override
 	public String toString() {
-		return String.format("huevos %s - cantHuevos %d - pollitos %s - cantPollitos %d - dineroEnCaja %s", huevos,
+		return String.format("huevos %s - cantHuevos %d - pollitos %s - cantPollitos %d - dineroEnCaja %s - precios %s",
+				huevos,
 				huevos.size(), pollitos, pollitos.size(),
-				dineroEnCaja);
+				dineroEnCaja, precios);
 	}
 
 
