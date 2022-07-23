@@ -1,7 +1,9 @@
 package com.granja;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Granja {
 
@@ -9,10 +11,10 @@ public class Granja {
 	private BigDecimal dineroEnCaja;
 	int cantMaxPollitos;
 	int cantMaxHuevos;
-	private ArrayList<Huevo> huevos = new ArrayList<>();
-	private ArrayList<Pollito> pollitos = new ArrayList<>();
-	private ArrayList<Precios> precios = new ArrayList<>();
-
+	private LinkedList<Huevo> huevos = new LinkedList<Huevo>();
+	private LinkedList<Pollito> pollitos = new LinkedList<>();
+	private LinkedList<Precios> precios = new LinkedList<>();
+	private LocalDate now = LocalDate.now();
 
 	public Granja(String dineroEnCaja, int cantMaxPollitos, int cantMaxHuevos) {
 		super();
@@ -65,33 +67,57 @@ public class Granja {
 		this.huevos.add(huevo);
 	}
 
-	public void venderPollito(int id) {
+	public void venderPollito(int cant) {
+		if (pollitos.size() > cant) {
+			System.out.println("Voy a Comprar pollis");
+		}
 	}
 
 	public void comprarPollito() {}
 
-	public void venderHuevos(int id) {
+	public void venderHuevos() {
+
 	}
 
-	public void comprarHuevos() {}
+	public void comprarHuevos(int cant) {
+		// if(dineroEnCaja>(Precios.getPrecioCompraByAnimal("huevos")*cant)) {
+
+		// }
+	}
 
 	public void mostrarEstado() {
-
-		System.out.println("La cantidad de huevos que hay en la granja es de " + huevos.size());
-		System.out.println("La mayor cantidad de huevos que puede haber es de: " + cantMaxHuevos);
-		System.out.printf("Los huevos se venden a %s y se compran a %s \n", Precios.getPrecioVentaByAnimal("huevo"),
-				Precios.getPrecioCompraByAnimal("huevo"));
-
-		System.out.println("La cantidad de pollitos que hay en la granja es de " + pollitos.size());
-		System.out.println("La mayor cantidad de pollitos que puede haber es de: " + cantMaxPollitos);
-
-		System.out.printf("Los pollos se venden a %s y se compran a %s \n", Precios.getPrecioVentaByAnimal("pollito"),
-				Precios.getPrecioCompraByAnimal("pollito"));
-
 		System.out.println("La caja es de " + this.dineroEnCaja + " pesos");
-		System.out.printf("Hay %d precios guardados", precios.size());
+		mostrarStock();
+		mostrarCapacidad();
+		mostrarPrecios();
+		System.out.println("DETALLE DE HUEVOS: " + huevos);
+		System.out.println("DETALLE DE POLLITOS: " + pollitos);
+	}
+
+	private void mostrarPrecios() {
+		System.out.println("PRECIOS: ");
+		// System.out.printf("Los huevos se venden a %s y se compran a %s \n",
+		// Precios.getPrecioVentaByAnimal("huevo"),
+		// Precios.getPrecioCompraByAnimal("huevo"));
+		// System.out.printf("Los pollos se venden a %s y se compran a %s \n",
+		// Precios.getPrecioVentaByAnimal("pollito"),
+		// Precios.getPrecioCompraByAnimal("pollito"));
+		System.out.printf("Hay %d precios guardados\n", precios.size());
 		System.out.println(precios);
 
+	}
+
+	private void mostrarCapacidad() {
+		System.out.println("CAPACIDAD: ");
+		System.out.println("La mayor cantidad de huevos que puede haber es de: " + cantMaxHuevos);
+		System.out.println("La mayor cantidad de pollitos que puede haber es de: " + cantMaxPollitos);
+
+	}
+
+	private void mostrarStock() {
+		System.out.println("STOCK: ");
+		System.out.println("La cantidad de huevos: " + huevos.size());
+		System.out.println("La cantidad de pollitos: " + pollitos.size());
 	}
 
 	public static void ofrecerMenu() {
@@ -104,16 +130,23 @@ public class Granja {
 		System.out.println("6. Salir \n");
 	}
 
-
-
 	@Override
 	public String toString() {
-		return String.format("huevos %s - cantHuevos %d - pollitos %s - cantPollitos %d - dineroEnCaja %s - precios %s",
+		return String.format("Huevos %s - CantHuevos %d - Pollitos %s - CantPollitos %d - DineroEnCaja %s - Precios %s",
 				huevos,
 				huevos.size(), pollitos, pollitos.size(),
 				dineroEnCaja, precios);
 	}
 
 
+	Iterator<Huevo> iterator = huevos.iterator();
+
+	public void eliminarExpirados() {
+		while (iterator.hasNext()) {
+			if (now.isAfter((iterator.next().nacimiento.plusDays(iterator.next().getDiasExpiracion())))) {
+				iterator.remove();
+			}
+		}
+	}
 
 }

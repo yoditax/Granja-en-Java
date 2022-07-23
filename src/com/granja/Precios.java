@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 public class Precios {
 	private int id;
 	private String animal;
-	private static BigDecimal precioCompra;
-	private static BigDecimal precioVenta;
+	private BigDecimal precioCompra;
+	private BigDecimal precioVenta;
 
 	public Precios(int id, String animal, String precioCompra, String precioVenta) {
 		super();
@@ -40,23 +40,23 @@ public class Precios {
 		return precioCompra;
 	}
 
-	public static BigDecimal getPrecioCompraByAnimal(String animal) {
-		return precioCompra;
-	}
+	// public static BigDecimal getPrecioCompraByAnimal(String animal) {
+	// return precioCompra;
+	// }
 
 	public void setPrecioCompra(BigDecimal precioCompra) {
 		this.precioCompra = precioCompra;
 	}
 
-	public void setPrecioCompraByAnimal(String animal, BigDecimal precioCompra) {
-		this.precioCompra = precioCompra;
-	}
+	//	public void setPrecioCompraByAnimal(String animal, BigDecimal precioCompra) {
+	// this.precioCompra = precioCompra;
+	// }
 
 	public BigDecimal getPrecioVenta() {
 		return precioVenta;
 	}
 
-	public static BigDecimal getPrecioVentaByAnimal(String animal) {
+	public BigDecimal getPrecioVentaByAnimal(String animal) {
 		return precioVenta;
 	}
 
@@ -64,9 +64,9 @@ public class Precios {
 		this.precioVenta = precioVenta;
 	}
 
-	public void setPrecioVentaByAnimal(String animal, BigDecimal precioVenta) {
-		this.precioVenta = precioVenta;
-	}
+	//	public void setPrecioVentaByAnimal(String animal, BigDecimal precioVenta) {
+	// this.precioVenta = precioVenta;
+	// }
 
 	@Override
 	public String toString() {

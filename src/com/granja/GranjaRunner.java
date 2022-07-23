@@ -23,13 +23,16 @@ public class GranjaRunner {
 		String precioCompraP = scanner.next();
 		System.out.println("Indique Precio de Venta de Pollitos: ");
 		String precioVentaP = scanner.next();
-		granja.addPrecio(new Precios(1, "pollito", precioCompraP, precioVentaP));
+		// granja.addPrecio(new Precios(1, "pollito", "100.5", "300"));
 		System.out.println(granja);
 
 
-		granja.addPollito(new Pollito(1, now, now, precioCompraP, precioVentaP, "pollito", Pollito.diasExpiracion));
-		granja.addPollito(new Pollito(2, now, now, precioCompraP, precioVentaP, "pollito", Pollito.diasExpiracion));
+		granja.addPollito(
+				new Pollito(1, 15, now));
+		granja.addPollito(
+				new Pollito(2, 25, now));
 
+		System.out.println(granja);
 
 		System.out.println("Cantidad maxima de huevos que puede tener: ");
 		int cantMaxHuevos = scanner.nextInt();
@@ -39,10 +42,11 @@ public class GranjaRunner {
 		System.out.println("Indique Precio de Venta de Huevos: ");
 		String precioVentaH = scanner.next();
 
+		granja.addPrecio(new Precios(1, "pollito", precioCompraP, precioVentaP));
 		granja.addPrecio(new Precios(2, "huevo", precioCompraH, precioVentaH));
 
 
-		granja.addHuevo(new Huevo(1, now, now, precioCompraH, precioVentaH, "huevo", Huevo.diasExpiracion));
+		granja.addHuevo(new Huevo(1, 10, now));
 
 
 		System.out.println(granja);
@@ -60,7 +64,9 @@ public class GranjaRunner {
 
 			case 2:
 			{
-				System.out.println("Quiero comprar huevos");
+				System.out.println("Cuantos huevos quiere comprar? ");
+				int cant = scanner.nextInt();
+				granja.comprarHuevos(cant);
 				break;
 			}
 
