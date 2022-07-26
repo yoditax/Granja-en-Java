@@ -6,11 +6,12 @@ public class Huevo extends Cattle {
 	String animal = "huevo";
 	static int diasExpiracion = 21;
 	public LocalDate nacimiento;
+	private int edadActual;
 
-
-	public Huevo(int id, int edadEnDias, LocalDate ingresoAGranja) {
-		super(id, edadEnDias, ingresoAGranja);
-		this.nacimiento = now.minusDays(edadEnDias);
+	public Huevo(int id, int edadEnDiasAlIngresar, LocalDate fechaIngresoAGranja) {
+		super(id, edadEnDiasAlIngresar, fechaIngresoAGranja);
+		this.nacimiento = now.minusDays(edadEnDiasAlIngresar);
+		// this.edadActual = now.minusLocalDate(nacimiento);
 		// this.precioVenta = Precios.getPrecioVentaByAnimal(animal); Me pide que ponga
 		// el precio como Static
 

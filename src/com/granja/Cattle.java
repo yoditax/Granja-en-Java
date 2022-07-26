@@ -6,22 +6,24 @@ import java.time.LocalDate;
 public class Cattle {
 	LocalDate now = LocalDate.now();
 	private int id;
-	private int edadEnDias;
+	private int edadEnDiasAlIngresar;
 	private LocalDate nacimiento;
 	private LocalDate ingresoAGranja;
 	private String animal;
+	// private int edadActual;
 	// private BigDecimal precioCompra = Precios.getPrecioCompraByAnimal(animal);
 	// private BigDecimal precioVenta = Precios.getPrecioVentaByAnimal(animal);
 	// private BigDecimal precioCompra;
 	// private BigDecimal precioVenta;
 	private int diasExpiracion;
+	private int edadActual;
 
-
-	public Cattle(int id, int edadEnDias, LocalDate ingresoAGranja) {
+	public Cattle(int id, int edadEnDiasAlIngresar, LocalDate fechaIngresoAGranja) {
 		this.id = id;
-		this.edadEnDias = edadEnDias;
-		this.nacimiento = now.minusDays(edadEnDias);
-		this.ingresoAGranja = ingresoAGranja;
+		this.edadEnDiasAlIngresar = edadEnDiasAlIngresar;
+		this.nacimiento = now.minusDays(edadEnDiasAlIngresar);
+		this.ingresoAGranja = fechaIngresoAGranja;
+
 		// this.precioCompra = new BigDecimal(precioCompra);
 		// this.precioVenta = new BigDecimal(precioVenta);
 		// this.animal = animal;
