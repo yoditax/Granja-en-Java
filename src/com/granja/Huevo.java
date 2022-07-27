@@ -2,7 +2,7 @@ package com.granja;
 
 import java.time.LocalDate;
 
-public class Huevo extends Cattle {
+public class Huevo extends Ganado {
 	String animal = "huevo";
 	static int diasExpiracion = 21;
 	public LocalDate nacimiento;
@@ -14,10 +14,7 @@ public class Huevo extends Cattle {
 		// this.edadActual = now.minusLocalDate(nacimiento);
 		// this.precioVenta = Precios.getPrecioVentaByAnimal(animal); Me pide que ponga
 		// el precio como Static
-
 	}
-
-
 
 	// public static void setDiasExpiracion(int diasExpiracion) {
 	//		Huevo.diasExpiracion = diasExpiracion;

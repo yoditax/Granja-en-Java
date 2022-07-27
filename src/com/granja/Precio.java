@@ -2,39 +2,39 @@ package com.granja;
 
 import java.math.BigDecimal;
 
-public class Precios {
-	private int id;
-	private String animal;
+public class Precio {
+//	private int id;
+//	private EnumGanado animal;
 	private BigDecimal precioCompra;
 	private BigDecimal precioVenta;
 
-	public Precios(int id, String animal, String precioCompra, String precioVenta) {
+	public Precio(BigDecimal precioCompra, BigDecimal precioVenta) {
 		super();
-		this.id = id;
-		this.animal = animal;
-		this.precioCompra = new BigDecimal(precioCompra);
-		this.precioVenta = new BigDecimal(precioVenta);
+//		this.id = id;
+//		this.animal = animal;
+		this.precioCompra = precioCompra;
+		this.precioVenta = precioVenta;
 	}
 
-	public int getId() {
-		return id;
-	}
+//	public int getId() {
+//		return id;
+//	}
 
-	public int getIdByAnimal(String animal) {
-		return id;
-	}
+//	public int getIdByAnimal(String animal) {
+//		return id;
+//	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 
-	public String getAnimal() {
-		return animal;
-	}
-
-	public void setAnimal(String animal) {
-		this.animal = animal;
-	}
+//	public EnumGanado getAnimal() {
+//		return animal;
+//	}
+//
+//	public void setAnimal(EnumGanado animal) {
+//		this.animal = animal;
+//	}
 
 	public BigDecimal getPrecioCompra() {
 		return precioCompra;
@@ -70,7 +70,9 @@ public class Precios {
 
 	@Override
 	public String toString() {
-		return String.format("Id - %d, Animal - %s,  Precio Venta - %s, Precio Compra - %s", id, animal, precioVenta,
+//		return String.format("Id - %d, Animal - %s,  Precio Venta - %s, Precio Compra - %s", id, animal, precioVenta,
+//				precioCompra);
+		return String.format("Precio Venta - %s, Precio Compra - %s", precioVenta,
 				precioCompra);
 	}
 

@@ -2,7 +2,7 @@ package com.granja;
 
 import java.time.LocalDate;
 
-public class Pollito extends Cattle {
+public class Pollito extends Ganado {
 	static String animal = "pollito";
 	public static int diasExpiracion = 2000;
 

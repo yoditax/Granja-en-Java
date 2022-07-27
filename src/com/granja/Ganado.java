@@ -3,7 +3,7 @@ package com.granja;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Cattle {
+public class Ganado {
 	LocalDate now = LocalDate.now();
 	private int id;
 	private int edadEnDiasAlIngresar;
@@ -18,7 +18,7 @@ public class Cattle {
 	private int diasExpiracion;
 	private int edadActual;
 
-	public Cattle(int id, int edadEnDiasAlIngresar, LocalDate fechaIngresoAGranja) {
+	public Ganado(int id, int edadEnDiasAlIngresar, LocalDate fechaIngresoAGranja) {
 		this.id = id;
 		this.edadEnDiasAlIngresar = edadEnDiasAlIngresar;
 		this.nacimiento = now.minusDays(edadEnDiasAlIngresar);

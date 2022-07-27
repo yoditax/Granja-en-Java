@@ -2,6 +2,7 @@ package com.granja;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,7 +14,7 @@ public class Granja {
 	int cantMaxHuevos;
 	private LinkedList<Huevo> huevos = new LinkedList<Huevo>();
 	private LinkedList<Pollito> pollitos = new LinkedList<>();
-	private LinkedList<Precios> precios = new LinkedList<>();
+	private HashMap<EnumGanado, Precio> precios = new HashMap<>();
 	private LocalDate now = LocalDate.now();
 
 	public Granja(String dineroEnCaja, int cantMaxPollitos, int cantMaxHuevos) {
@@ -23,44 +24,16 @@ public class Granja {
 		this.cantMaxPollitos = cantMaxPollitos;
 	}
 
-	public int getCantMaxPollitos() {
-		return cantMaxPollitos;
-	}
-
-	public void setCantMaxPollitos(int cantMaxPollitos) {
-		this.cantMaxPollitos = cantMaxPollitos;
-	}
-
-	public int getCantMaxHuevos() {
-		return cantMaxHuevos;
-	}
-
-	public void setCantMaxHuevos(int cantMaxHuevos) {
-		this.cantMaxHuevos = cantMaxHuevos;
-	}
-
-	public int getCantHuevos() {
-		return huevos.size();
-	}
-
-	public int getCantPollitos() {
-		return pollitos.size();
-	}
-
-	public BigDecimal getDineroEnCaja() {
-		return dineroEnCaja;
-	}
-
-	public void setDineroEnCaja(BigDecimal dineroEnCaja) {
-		this.dineroEnCaja = dineroEnCaja;
-	}
-
 	public void addPollito(Pollito pollito) {
 		this.pollitos.add(pollito);
 	}
 
-	public void addPrecio(Precios precio) {
-		this.precios.add(precio);
+	public void addPrecio(EnumGanado animal, Precio precio) {
+		this.precios.put(animal, precio);
+	}
+	
+	public Precio getPrecioByAnimal(EnumGanado animal) {
+		return this.precios.get(animal);
 	}
 
 	public void addHuevo(Huevo huevo) {
@@ -130,15 +103,6 @@ public class Granja {
 		System.out.println("6. Salir \n");
 	}
 
-	@Override
-	public String toString() {
-		return String.format("Huevos %s - CantHuevos %d - Pollitos %s - CantPollitos %d - DineroEnCaja %s - Precios %s",
-				huevos,
-				huevos.size(), pollitos, pollitos.size(),
-				dineroEnCaja, precios);
-	}
-
-
 	Iterator<Huevo> iterator = huevos.iterator();
 
 	public void eliminarExpirados() {
@@ -147,6 +111,61 @@ public class Granja {
 				iterator.remove();
 			}
 		}
+	}
+
+	public BigDecimal getDineroEnCaja() {
+		return dineroEnCaja;
+	}
+
+	public void setDineroEnCaja(BigDecimal dineroEnCaja) {
+		this.dineroEnCaja = dineroEnCaja;
+	}
+
+	public int getCantMaxPollitos() {
+		return cantMaxPollitos;
+	}
+
+	public void setCantMaxPollitos(int cantMaxPollitos) {
+		this.cantMaxPollitos = cantMaxPollitos;
+	}
+
+	public int getCantMaxHuevos() {
+		return cantMaxHuevos;
+	}
+
+	public void setCantMaxHuevos(int cantMaxHuevos) {
+		this.cantMaxHuevos = cantMaxHuevos;
+	}
+
+	public LinkedList<Huevo> getHuevos() {
+		return huevos;
+	}
+
+	public void setHuevos(LinkedList<Huevo> huevos) {
+		this.huevos = huevos;
+	}
+
+	public LinkedList<Pollito> getPollitos() {
+		return pollitos;
+	}
+
+	public void setPollitos(LinkedList<Pollito> pollitos) {
+		this.pollitos = pollitos;
+	}
+
+
+	public HashMap<EnumGanado, Precio> getPrecios() {
+		return precios;
+	}
+
+	public void setPrecios(HashMap<EnumGanado, Precio> precios) {
+		this.precios = precios;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Huevos %s - CantHuevos %d - Pollitos %s - CantPollitos %d - DineroEnCaja %s - Precios %s",
+				huevos, huevos.size(), pollitos, pollitos.size(), dineroEnCaja, precios);
 	}
 
 }

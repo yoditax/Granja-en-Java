@@ -20,17 +20,14 @@ public class GranjaRunner {
 		int cantMaxPollitos = scanner.nextInt();
 		granja.setCantMaxPollitos(cantMaxPollitos);
 		System.out.println("Indique Precio de compra de Pollitos: ");
-		String precioCompraP = scanner.next();
+		BigDecimal precioCompraP = scanner.nextBigDecimal();
 		System.out.println("Indique Precio de Venta de Pollitos: ");
-		String precioVentaP = scanner.next();
+		BigDecimal precioVentaP = scanner.nextBigDecimal();
 		// granja.addPrecio(new Precios(1, "pollito", "100.5", "300"));
 		System.out.println(granja);
 
-
-		granja.addPollito(
-				new Pollito(1, 15, now));
-		granja.addPollito(
-				new Pollito(2, 25, now));
+		granja.addPollito(new Pollito(1, 15, now));
+		granja.addPollito(new Pollito(2, 25, now));
 
 		System.out.println(granja);
 
@@ -38,16 +35,20 @@ public class GranjaRunner {
 		int cantMaxHuevos = scanner.nextInt();
 		granja.setCantMaxHuevos(cantMaxHuevos);
 		System.out.println("Indique Precio de compra de Huevos: ");
-		String precioCompraH = scanner.next();
+		BigDecimal precioCompraH = scanner.nextBigDecimal();
 		System.out.println("Indique Precio de Venta de Huevos: ");
-		String precioVentaH = scanner.next();
+		BigDecimal precioVentaH = scanner.nextBigDecimal();
 
-		granja.addPrecio(new Precios(1, "pollito", precioCompraP, precioVentaP));
-		granja.addPrecio(new Precios(2, "huevo", precioCompraH, precioVentaH));
+//		granja.addPrecio(new Precio(1, EnumGanado.HUEVO.toString(), precioCompraP, precioVentaP));
+//		granja.addPrecio(new Precio(2, "huevo", precioCompraH, precioVentaH));
 
+		granja.addPrecio(EnumGanado.POLLITO, new Precio(precioCompraP, precioVentaP));
+		granja.addPrecio(EnumGanado.HUEVO, new Precio(precioCompraH, precioVentaH));
+
+		System.out.println(granja.getPrecios().get(EnumGanado.POLLITO));
+		System.out.println(granja.getPrecioByAnimal(EnumGanado.HUEVO));
 
 		granja.addHuevo(new Huevo(1, 10, now));
-
 
 		System.out.println(granja);
 
@@ -89,10 +90,6 @@ public class GranjaRunner {
 			}
 		}
 		System.out.println("Gracias por visitar nuestra granja!!!");
+		scanner.close();
 	}
-
-
-
 }
-
-
